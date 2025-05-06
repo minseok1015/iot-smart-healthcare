@@ -1,10 +1,13 @@
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+const dotenv = require('dotenv');
+const path   = require('path');
 
-dotenv.config();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config();                       // .env 로드
 
-export const CLIENT_ID     = process.env.CLIENT_ID;
-export const CLIENT_SECRET = process.env.CLIENT_SECRET;
-export const TOKEN_FILE    = path.join(__dirname, '..', 'token.json');
+// CommonJS에서는 __dirname / __filename 기본 제공
+const TOKEN_FILE = path.join(__dirname, '..', 'token.json');
+
+module.exports = {
+  CLIENT_ID:     process.env.CLIENT_ID,
+  CLIENT_SECRET: process.env.CLIENT_SECRET,
+  TOKEN_FILE
+};
