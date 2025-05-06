@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 
 const apiRouter = require('./routes/api');
 const sensorRouter = require('./routes/sensorData');
+const { startScheduler } = require('./src/sleep-scheduler');
+const { test } = require('./src/test');
 
 const app = express();
 const PORT = 3000;
@@ -15,4 +17,6 @@ app.use('/api/environment', sensorRouter); // POST /api/environment
 
 app.listen(PORT, () => {
   console.log(`server running: http://localhost:${PORT}`);
+  startScheduler();
+  test();
 });
