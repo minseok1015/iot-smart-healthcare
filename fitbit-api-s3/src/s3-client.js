@@ -1,19 +1,19 @@
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
-import fs from 'fs';
-import dotenv from 'dotenv';
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const fs     = require('fs');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
 const s3 = new S3Client({
   region: 'ap-northeast-2',
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    accessKeyId:     process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   }
 });
 
-export async function uploadSleepLog(data) {
-  const date = new Date().toISOString().slice(0, 10);
+async function uploadSleepLog(data) {
+  const date     = new Date().toISOString().slice(0, 10);
   const filePath = `sleep_${date}.json`;
   const s3Key    = `logs/${filePath}`;
 
@@ -33,3 +33,5 @@ export async function uploadSleepLog(data) {
     console.error('S3 업로드 실패', err);
   }
 }
+
+module.exports = { uploadSleepLog };
