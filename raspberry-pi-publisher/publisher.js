@@ -7,7 +7,7 @@ client.on('connect', () => {
     const data = {
       temperature: Math.floor(Math.random() * 10) + 20,
       humidity: Math.floor(Math.random() * 20) + 40,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
     client.publish('/sensor/data', JSON.stringify(data));
     console.log('Published:', data);
