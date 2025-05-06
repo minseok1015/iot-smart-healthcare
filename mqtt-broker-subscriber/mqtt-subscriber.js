@@ -19,7 +19,7 @@ client.on('message', async (topic, message) => {
   console.log('[MQTT] Received:', payload);
 
   try {
-    await axios.post('http://localhost:3000/receive', payload);
+    await axios.post('http://localhost:3000/api', payload);
     console.log('[Axios] POST success');
   } catch (err) {
     console.error('[Axios] POST failed:', err.message);

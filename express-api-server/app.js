@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const apiRouter = require('./routes/api');
-const sensorRouter = require('./routes/sensordata');
+const sensorRouter = require('./routes/sensorData');
 
 const app = express();
 const PORT = 3000;
