@@ -18,7 +18,7 @@ client.on('connect', () => {
       const data = {
         temperature,
         humidity,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
       console.log('📡 Sending:', data);
@@ -27,3 +27,4 @@ client.on('connect', () => {
       console.error('⚠️ Failed to read from sensor');
     }
   }, 2000);
+});
